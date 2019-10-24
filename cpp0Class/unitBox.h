@@ -64,9 +64,9 @@ public:
 
     bool operator==(Box &a, Box &b);
 
-    std::istream &operator>>(istream &is, Box &a);
+    istream &operator>>(istream &is, Box &a);
 
-    std::ostream &operator<<(ostream &os, Box &a);
+    ostream &operator<<(ostream &os, Box &a);
 
 #endif
 

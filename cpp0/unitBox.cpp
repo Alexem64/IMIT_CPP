@@ -88,13 +88,13 @@ bool operator == (Box &a, Box &b)
     return (a.length == b.length) && (a.height == b.height) && (a.value == b.value) && (a.weight == b.weight) &&
            (a.width == b.width);
 }
-std::istream & operator >> (istream & is, Box &a)
+istream & operator >> (istream & is, Box &a)
 {
     return	cin >> a.length >> a.width >> a.height >> a.weight >> a.value;
 
 }
 
-std::ostream & operator << (ostream & is, Box &a)
+ostream & operator << (ostream & os, Box &a)
 {
     return cout << a.length << ' ' << a.width << ' ' << a.height << ' ' << a.weight << ' ' << a.value << endl;
 };

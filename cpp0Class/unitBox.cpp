@@ -61,18 +61,18 @@ bool isVpihyemoe(Box arrBox[], int arrSize)
             }
         }
         if (swapCount == 0) {
-            cout << "Boxes've been sorted already " << endl;
+  //          cout << "Boxes've been sorted already " << endl;
             break;
         }
     }
     bool isPossible;
 
-    cout << "Sorted boxes: " << endl;
+ //   cout << "Sorted boxes: " << endl;
 
     for (int k = 0; k < arrSize - 1; k++)
     {
-        cout << arrBox[k].getLength() << ' ' << arrBox[k].getWidth() << ' ' << arrBox[k].getHeight() << ' ' << arrBox[k].getWeight() << endl;
-        if (k == arrSize - 2) { cout << arrBox[k + 1].getLength() << ' ' << arrBox[k + 1].getWidth() << ' ' << arrBox[k + 1].getHeight() << ' ' << arrBox[k + 1].getWeight() << endl; }
+ //       cout << arrBox[k].getLength() << ' ' << arrBox[k].getWidth() << ' ' << arrBox[k].getHeight() << ' ' << arrBox[k].getWeight() << endl;
+ //       if (k == arrSize - 2) { cout << arrBox[k + 1].getLength() << ' ' << arrBox[k + 1].getWidth() << ' ' << arrBox[k + 1].getHeight() << ' ' << arrBox[k + 1].getWeight() << endl; }
         if ((arrBox[k].getHeight() < arrBox[k + 1].getHeight()) && (arrBox[k].getLength() < arrBox[k + 1].getLength()) && (arrBox[k].getWidth() < arrBox[k + 1].getWidth()))
         {
             isPossible = true;

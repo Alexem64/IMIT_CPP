@@ -89,6 +89,12 @@
 		<Unit filename="C:/Users/semen/CLionProjects/cpp0/unitBox.h">
 			<Option target="cpp0"/>
 		</Unit>
+		<Unit filename="C:/Users/semen/CLionProjects/cpp0/unitContainer.cpp">
+			<Option target="cpp0"/>
+		</Unit>
+		<Unit filename="C:/Users/semen/CLionProjects/cpp0/unitContainer.h">
+			<Option target="cpp0"/>
+		</Unit>
 		<Unit filename="C:/Users/semen/CLionProjects/cpp0/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

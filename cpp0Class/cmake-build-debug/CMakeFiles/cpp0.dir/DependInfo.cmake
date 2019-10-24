@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/semen/CLionProjects/cpp0Class/main.cpp" "C:/Users/semen/CLionProjects/cpp0Class/cmake-build-debug/CMakeFiles/cpp0.dir/main.cpp.obj"
   "C:/Users/semen/CLionProjects/cpp0Class/unitBox.cpp" "C:/Users/semen/CLionProjects/cpp0Class/cmake-build-debug/CMakeFiles/cpp0.dir/unitBox.cpp.obj"
+  "C:/Users/semen/CLionProjects/cpp0Class/unitContainer.cpp" "C:/Users/semen/CLionProjects/cpp0Class/cmake-build-debug/CMakeFiles/cpp0.dir/unitContainer.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
