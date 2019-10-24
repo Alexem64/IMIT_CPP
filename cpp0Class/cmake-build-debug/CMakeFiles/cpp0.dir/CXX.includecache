@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/semen/CLionProjects/cpp0Class/main.cpp
+iostream
+-
+array
+-
+unitBox.h
+C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
+
+C:/Users/semen/CLionProjects/cpp0Class/unitBox.cpp
+iostream
+-
+array
+-
+unitBox.h
+C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
+
+C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
+iostream
+-
+
