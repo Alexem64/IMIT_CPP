@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include "unitBox.h"
+#include "unitContainer.h"
 
 using namespace std;
 
@@ -76,7 +77,54 @@ int main()
     cin >> f;
     cout << "And welcome - output operator: " << f << endl;
 
-   // int forOutput;
+    Container cont100(100,100,100,100);
+    Container defcont;
+    Container::addBox(cont100, f);
+    cout << "cont100:" <<cont100 << endl;
+    cout << "Adding f: " << f << endl;
+ //   cout << "defcont:" <<defcont << endl;
+    cout << "Count boxes cont100: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights con100: " << Container::countWeight(cont100) << endl;
+    cout << "Count values con100: " << Container::countValue(cont100) << endl;
+ /*   Container::addBox(defcont, f);
+    cout << "Adding f: " << f << endl;
+    cout << Container::addBox(defcont,f);
+    cout << "Count boxes cont100: " << Container::countBoxes(defcont) << endl;
+    cout << "Count weights con100: " << Container::countWeight(defcont) << endl;
+    cout << "Count values con100: " << Container::countValue(defcont) << endl;
+*/
+        Container::addBox(cont100,a);
+    cout << "Adding a: " << a << endl;
+    cout << "Count boxes: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights: " << Container::countWeight(cont100) << endl;
+    cout << "Count values: " << Container::countValue(cont100) << endl;
+    Container::addBox(cont100,b);
+    cout << "Adding b: " << b << endl;
+    cout << "Count boxes: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights: " << Container::countWeight(cont100) << endl;
+    cout << "Count values: " << Container::countValue(cont100) << endl;
+    Container::addBox(cont100,c);
+    cout << "Adding c: " << c << endl;
+    cout << "Count boxes: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights: " << Container::countWeight(cont100) << endl;
+    cout << "Count values: " << Container::countValue(cont100) << endl;
+    Container::addBox(cont100,d);
+    cout << "Adding d: " << d << endl;
+    cout << "Count boxes: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights: " << Container::countWeight(cont100) << endl;
+    cout << "Count values: " << Container::countValue(cont100) << endl;
+    Container::addBox(cont100,e);
+    cout << "Adding e: " << e << endl;
+    cout << "Count boxes: " << Container::countBoxes(cont100) << endl;
+    cout << "Count weights: " << Container::countWeight(cont100) << endl;
+    cout << "Count values: " << Container::countValue(cont100) << endl;
+
+    //trying getBox
+    Box ff = Container::getBox(cont100,3);
+    cout << "Try get third box: " << ff;
+
+
+    // int forOutput;
     //cin >> forOutput;
     return (0);
 }

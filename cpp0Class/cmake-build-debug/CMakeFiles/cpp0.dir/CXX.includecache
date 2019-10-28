@@ -13,16 +13,20 @@ array
 -
 unitBox.h
 C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
+unitContainer.h
+C:/Users/semen/CLionProjects/cpp0Class/unitContainer.h
 
-C:/Users/semen/CLionProjects/cpp0Class/unitBox.cpp
+C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
 iostream
 -
-array
+
+C:/Users/semen/CLionProjects/cpp0Class/unitContainer.cpp
+unitContainer.h
+C:/Users/semen/CLionProjects/cpp0Class/unitContainer.h
+
+C:/Users/semen/CLionProjects/cpp0Class/unitContainer.h
+vector
 -
 unitBox.h
 C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
-
-C:/Users/semen/CLionProjects/cpp0Class/unitBox.h
-iostream
--
 

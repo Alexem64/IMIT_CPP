@@ -14,7 +14,48 @@ class Container {
     double cweight;
     std::vector<Box> cboxes;
 public:
+ int getCLength() const
+    {
+        return clength;
+    }
+
+    int getCWidth() const
+    {
+        return cwidth;
+    }
+
+    int getCHeight() const
+    {
+        return cheight;
+    }
+
+    double getCWeight() const
+    {
+        return cweight;
+    }
+
+    void setCLength(int cl) {
+        clength = cl;
+    }
+    void setCWidth(int cw) {
+        cwidth = cw;
+    }
+    void setCHeight(int ch) {
+        cheight = ch;
+    }
+    void setCWeight(double cwei) {
+        cweight = cwei;
+    }
+
     //default constructor
+    Container ()
+    {
+        clength = 100;
+        cwidth = 100;
+        cheight =100;
+        cweight = 100;
+        cboxes = {Box(3,3,3,3.3,5),Box(3,3,3,3.3,5),Box(3,3,3,3.3,5)};
+    }
     Container (int cl, int cw, int ch, double cwei)
     {
         clength = cl;
@@ -23,21 +64,23 @@ public:
         cweight = cwei;
     }
 
-    int countBoxes(Container);
+    static int countBoxes(const Container&);
 
-    double countWeight(Container);
+    static double countWeight(const Container&);
 
-    int countValue(Container);
+    static int countValue(const Container&);
 
-    Box getBox(Container,int);
+    static Box getBox(const Container&, int);
 
-    int addBox(Container,Box);
+    static int addBox(Container&, Box);
 
     bool delBox(Container, const int);
-
-    Box operator[](Container);
-
-
 };
+
+
+istream &operator>>(istream &is, Container &a);
+
+ostream &operator<<(ostream &os, const Container &a);
+
 
 #endif //CPP0_UNITCONTAINER_H

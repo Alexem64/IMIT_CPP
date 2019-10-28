@@ -21,11 +21,11 @@ public:
         return height;
     }
 
-    double getWeight() {
+    double getWeight() const {
         return weight;
     }
 
-    int getValue() {
+    int getValue() const {
         return value;
     }
 
