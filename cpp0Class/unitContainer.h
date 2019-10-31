@@ -82,5 +82,7 @@ istream &operator>>(istream &is, Container &a);
 
 ostream &operator<<(ostream &os, const Container &a);
 
+//Box &operator [] (const Container &a);
+//TODO: operator []
 
 #endif //CPP0_UNITCONTAINER_H
