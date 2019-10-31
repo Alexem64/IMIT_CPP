@@ -74,7 +74,7 @@ public:
 
     static int addBox(Container&, Box);
 
-    bool delBox(Container, const int);
+    static bool delBox(Container, const int);
 };
 
 

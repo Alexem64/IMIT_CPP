@@ -33,18 +33,24 @@ Box Container::getBox(const Container &c1, int ind) {
 }
 
 int Container::addBox(Container &c1, Box b1) {
-    if (b1.getWeight() + countWeight(c1) > c1.cweight) {
-        return -1;
-        //TODO: throw exception
+    try
+    {
+        if (b1.getWeight() + countWeight(c1) > c1.cweight) {
+            throw ("Your box is too heavy!");
+        }
     }
-   //c1.cboxes.push_back(b1);
+    catch (const char* exception)
+    {
+        std::cerr << "Error: " << exception << '\n';
+        return -1;
+    }
    c1.cboxes.insert(c1.cboxes.begin(),b1) ;
    return countBoxes(c1);
+
 }
 
 bool Container::delBox(Container c1, const int ind) {
     if (ind < countBoxes(c1)) return false;
-
     c1.cboxes.erase(c1.cboxes.begin() + ind);
     return true;
 }
