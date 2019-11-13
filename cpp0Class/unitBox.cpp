@@ -65,7 +65,7 @@ bool isVpihyemoe(Box arrBox[], int arrSize)
             break;
         }
     }
-    bool isPossible;
+    bool isPossible=false;
 
  //   cout << "Sorted boxes: " << endl;
 

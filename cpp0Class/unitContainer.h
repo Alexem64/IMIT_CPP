@@ -4,6 +4,7 @@
 
 #ifndef CPP0_UNITCONTAINER_H
 #define CPP0_UNITCONTAINER_H
+
 #include <vector>
 #include "unitBox.h"
 
@@ -14,75 +15,81 @@ class Container {
     double cweight;
     std::vector<Box> cboxes;
 public:
- int getCLength() const
-    {
+    int getCLength() const {
         return clength;
     }
 
-    int getCWidth() const
-    {
+    int getCWidth() const {
         return cwidth;
     }
 
-    int getCHeight() const
-    {
+    int getCHeight() const {
         return cheight;
     }
 
-    double getCWeight() const
-    {
+    double getCWeight() const {
         return cweight;
     }
 
     void setCLength(int cl) {
         clength = cl;
     }
+
     void setCWidth(int cw) {
         cwidth = cw;
     }
+
     void setCHeight(int ch) {
         cheight = ch;
     }
+
     void setCWeight(double cwei) {
         cweight = cwei;
     }
 
     //default constructor
-    Container ()
-    {
+    Container() {
         clength = 100;
         cwidth = 100;
-        cheight =100;
+        cheight = 100;
         cweight = 100;
-        cboxes = {Box(3,3,3,3.3,5),Box(3,3,3,3.3,5),Box(3,3,3,3.3,5)};
+        cboxes = {Box(3, 3, 3, 3.3, 5), Box(3, 3, 3, 3.3, 5), Box(3, 3, 3, 3.3, 5)};
     }
-    Container (int cl, int cw, int ch, double cwei)
-    {
+
+    Container(int cl, int cw, int ch, double cwei) {
         clength = cl;
         cwidth = cw;
         cheight = ch;
         cweight = cwei;
     }
 
-    static int countBoxes(const Container&);
+    int countBoxes();
 
-    static double countWeight(const Container&);
+    double countWeight();
 
-    static int countValue(const Container&);
+    int countValue();
 
-    static Box getBox(const Container&, int);
+    Box getBox(int);
 
-    static int addBox(Container&, Box);
+    int addBox(Box);
 
-    static bool delBox(Container, const int);
+    bool delBox(int);
+
+    const Box &operator[](const int ind) const;
+
+    Box &operator[](const int ind);
+
 };
-
 
 istream &operator>>(istream &is, Container &a);
 
 ostream &operator<<(ostream &os, const Container &a);
 
-//Box &operator [] (const Container &a);
-//TODO: operator []
+struct tooMuchWeight{
+    std::string message;
+    tooMuchWeight (const char * cmessage){
+        message = cmessage;
+    }
+};
 
 #endif //CPP0_UNITCONTAINER_H

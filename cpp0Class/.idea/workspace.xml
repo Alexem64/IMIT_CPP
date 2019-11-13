@@ -12,12 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e648aa4-70dc-46b2-953e-e578dbbac71f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/unitBox.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp0.dir/unitBox.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cpp0.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cpp0.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitBox.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unitBox.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitContainer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unitContainer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitContainer.h" beforeDir="false" afterPath="$PROJECT_DIR$/unitContainer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -78,7 +84,11 @@
       <workItem from="1571464108619" duration="1546000" />
       <workItem from="1571938699504" duration="4277000" />
       <workItem from="1572542771094" duration="2340000" />
-      <workItem from="1572545345629" duration="784000" />
+      <workItem from="1572545345629" duration="870000" />
+      <workItem from="1572598877721" duration="1748000" />
+      <workItem from="1572679802595" duration="4187000" />
+      <workItem from="1573144455669" duration="219000" />
+      <workItem from="1573666651138" duration="1449000" />
     </task>
     <task id="LOCAL-00001" summary="commit3&#10;all work is almost done and tested. except exception and namespace.">
       <created>1572288167890</created>
