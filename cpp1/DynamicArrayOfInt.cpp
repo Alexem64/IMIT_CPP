@@ -9,7 +9,7 @@ void DynamicArrayOfInt::resize(const int newSize) {
 }
 
 bool DynamicArrayOfInt::operator==(const DynamicArrayOfInt &a) {
-    if (this->size != a.size) { throw ("Lengths are not equal"); }
+    if (this->size != a.size) { throw UnequalLengths("Lengths are not equal"); }
     for (int i = 0; i < this->size; i++) {
         if (this->Array[i] != a.Array[i]) return false;
     }
@@ -17,12 +17,11 @@ bool DynamicArrayOfInt::operator==(const DynamicArrayOfInt &a) {
 }
 
 bool DynamicArrayOfInt::operator!=(const DynamicArrayOfInt &a) {
-    if (this->size != a.size) { throw ("Lengths are not equal"); }
+    if (this->size != a.size) { throw UnequalLengths("Lengths are not equal"); }
     bool result = false;
     for (int i = 0; i < this->size; i++) {
         if (this->Array[i] == a.Array[i]) result = false;
         else return true;
-
     }
     return result;
 }
@@ -33,7 +32,8 @@ bool DynamicArrayOfInt::operator>(const DynamicArrayOfInt &a) {
         if (this->Array[i] < a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст до size-1 совпадает
-        if (i == this->size--) return this->size > a.size;
+        if (i == this->size--)
+            return this->size > a.size;
     }
     return true;
 }
@@ -44,9 +44,8 @@ bool DynamicArrayOfInt::operator>=(const DynamicArrayOfInt &a) {
         if (this->Array[i] < a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if ((i == this->size--) && (this->size < a.size)) {
-            return false;
-        } else return true;
+        if (i == this->size--)
+            return this->size >= a.size;
     }
     return true;
 }
@@ -57,9 +56,7 @@ bool DynamicArrayOfInt::operator<(const DynamicArrayOfInt &a) {
         if (this->Array[i] > a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if ((i == this->size--) && (this->size >= a.size)) {
-            return false;
-        } else return true;
+        if (i == this->size--) return this->size < a.size;
     }
     return true;
 }
@@ -70,9 +67,7 @@ bool DynamicArrayOfInt::operator<=(const DynamicArrayOfInt &a) {
         if (this->Array[i] > a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if ((i == this->size--) && (this->size > a.size)) {
-            return false;
-        } else return true;
+        if (i == this->size--) return this->size <= a.size;
     }
     return true;
 }

@@ -87,6 +87,12 @@ public:
 
     ostream &operator<<(ostream &os, DynamicArrayOfInt &a);
 
+    struct UnequalLengths{
+        string message;
+        UnequalLengths(const char* cmessage){
+            message=cmessage;
+        }
+    };
 
 /*    -- resize(newSize) – изменение размера (массив пересоздается, элементы копируются на новое
                                             место, старый массив разрушается; если новый размер меньше старого, не поместившаяся часть
@@ -100,6 +106,6 @@ public:
     элементы m1, а затем – m2),
     -- операторы ввода / вывода.
 */
-};
+
 
 #endif //CPP1_DYNAMICARRAYOFINT_H
