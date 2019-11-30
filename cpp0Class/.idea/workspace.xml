@@ -11,7 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e648aa4-70dc-46b2-953e-e578dbbac71f" name="Default Changelist" comment="" />
+    <list default="true" id="4e648aa4-70dc-46b2-953e-e578dbbac71f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/main.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +82,8 @@
       <workItem from="1572679802595" duration="4187000" />
       <workItem from="1573144455669" duration="219000" />
       <workItem from="1573666651138" duration="1694000" />
+      <workItem from="1574490342195" duration="642000" />
+      <workItem from="1574491503972" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="commit3&#10;all work is almost done and tested. except exception and namespace.">
       <created>1572288167890</created>

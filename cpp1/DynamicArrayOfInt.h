@@ -8,13 +8,13 @@
 using namespace std;
 
 class DynamicArrayOfInt {
+    int size;
     int *Array;
-    int size{};
 
 public:
     DynamicArrayOfInt() {
-        Array = nullptr;
-        size = 10;
+        size = 4;
+        Array = new int [size];
     }
 
     DynamicArrayOfInt(int sz) {
@@ -38,15 +38,13 @@ public:
             Array[i] = obj.Array[i];
     }
 //remove constructor
-    DynamicArrayOfInt(DynamicArrayOfInt &&obj) {
-        //TODO: check operator of remove
+    DynamicArrayOfInt(DynamicArrayOfInt &&obj) noexcept {
         size = obj.size;
         Array = new int[obj.size];
         for (int i = 0; i < size; i++)
             Array[i] = obj.Array[i];
         obj.size = 0;
         obj.Array = nullptr;
-
     }
 
     ~DynamicArrayOfInt() {
@@ -65,7 +63,7 @@ public:
         return this->Array[ind];
     }
 
-    void resize(int);
+    DynamicArrayOfInt resize(int);
 
     bool operator==(const DynamicArrayOfInt &a);
 
@@ -79,9 +77,12 @@ public:
 
     bool operator<=(const DynamicArrayOfInt &a);
 
-   // операторы присваивания и перемещения
+    DynamicArrayOfInt&operator=(const DynamicArrayOfInt&);
+
+    DynamicArrayOfInt&operator=(DynamicArrayOfInt&&);
+
 };
-    DynamicArrayOfInt * operator + (const DynamicArrayOfInt & v1, const DynamicArrayOfInt &v2);
+    DynamicArrayOfInt  operator + (const DynamicArrayOfInt & v1, const DynamicArrayOfInt &v2);
 
     istream &operator>>(istream &is, DynamicArrayOfInt &a);
 
@@ -89,13 +90,14 @@ public:
 
     struct UnequalLengths{
         string message;
-        UnequalLengths(const char* cmessage){
+        explicit UnequalLengths(const char* cmessage){
             message=cmessage;
         }
     };
 
 /*    -- resize(newSize) – изменение размера (массив пересоздается, элементы копируются на новое
-                                            место, старый массив разрушается; если новый размер меньше старого, не поместившаяся часть
+                                            место, старый массив разрушается; если новый размер меньше старого,
+                                            не поместившаяся часть
             элементов теряется, если новый размер больше – добавляются элементы 0),
     -- операторы присваивания и перемещения,
     -- операторы == и != (поэлементное сравнение массивов, если массивы разных длин, то
