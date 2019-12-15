@@ -9,6 +9,7 @@ using namespace std;
 
 class DynamicArrayOfInt {
     int size;
+    int extraSize;
     int *Array;
 
 public:
@@ -63,7 +64,7 @@ public:
         return this->Array[ind];
     }
 
-    DynamicArrayOfInt resize(int);
+    void resize(int);
 
     bool operator==(const DynamicArrayOfInt &a);
 

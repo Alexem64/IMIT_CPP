@@ -7,13 +7,28 @@
 //resize(newSize) – изменение размера (массив пересоздается, элементы копируются на новое
 //место, старый массив разрушается; если новый размер меньше старого, не поместившаяся часть
 //элементов теряется, если новый размер больше – добавляются элементы 0),
-DynamicArrayOfInt DynamicArrayOfInt::resize(const int newSize) {
+void DynamicArrayOfInt::resize(const int newSize) {
     //создали новый массив размером newSize, конструктор заполняет все элементы 0
-    DynamicArrayOfInt newDAI(newSize);
+    int *newArray = new int [newSize];
+
+    for (int i=0; (i<newSize)&&(i<this->size); i++) {
+        newArray[i] = this->Array[i];
+     }
+    if (newSize>this->size) {
+        for (int i=this->size; i<newSize; i++) {
+            newArray[i] = 0;
+        }
+    }
+    this->Array = newArray;
+    this->size=newSize;
+   // return newDAI;
+
+    /*
     int minSize;
     if (newSize >= this->size) {
         minSize = this->size;
     } else minSize = newSize;
+
     for (int i = 0; i < minSize; i++) {
         newDAI.Array[i] = this->Array[i];
         cout << "newDAI[" << i << "]" << newDAI.Array[i] << " ";
@@ -21,11 +36,13 @@ DynamicArrayOfInt DynamicArrayOfInt::resize(const int newSize) {
     for (int i = minSize; i < newSize; i++) {
         cout << "newDAI[" << i << "]" << newDAI.Array[i] << " ";
     }
+    delete []this->Array;
+
     //TODO: создает массив с 0, cout можно убирать. а вот после - ошибка, разобраться с удалением старого массива
     // delete []this->Array;
     //delete []this;
     return newDAI;
-    /*
+    */ /*
     this->size = newSize;
     this->Array = new int[newSize];
     for (int i = 0; i < newSize; i++) {

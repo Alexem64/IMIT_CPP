@@ -19,8 +19,10 @@ int main() {
      cin >> emptyDAI;
      cout << "Here is your array: " << emptyDAI <<  endl;
 
-    DynamicArrayOfInt new6DAI{emptyDAI.resize(6)};
-     cout << "Try to resize array in bigger array" << new6DAI << endl;
+    //DynamicArrayOfInt new6DAI{emptyDAI.resize(6)};
+    emptyDAI.resize(6);
+    cout << "Try to resize array in bigger array" << emptyDAI  << endl;
+    //DynamicArrayOfInt new2DAI{emptyDAI.resize(2)};
     emptyDAI.resize(2);
      cout << "Try to resize array in smaller array" << emptyDAI << endl;
 
