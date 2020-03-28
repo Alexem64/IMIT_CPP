@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-class DynamicArrayOfInt {
+class DynamicArrayOfInt : public error_code {
     int size;
     int extraSize;
     int *Array;

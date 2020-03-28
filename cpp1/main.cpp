@@ -19,12 +19,17 @@ int main() {
      cin >> emptyDAI;
      cout << "Here is your array: " << emptyDAI <<  endl;
 
+    DynamicArrayOfInt emptyDAIForResizing{DynamicArrayOfInt()};
+    emptyDAIForResizing = emptyDAI;
+
+
     //DynamicArrayOfInt new6DAI{emptyDAI.resize(6)};
-    emptyDAI.resize(6);
-    cout << "Try to resize array in bigger array" << emptyDAI  << endl;
+    emptyDAIForResizing.resize(6);
+    cout << "Try to resize array in bigger array" << emptyDAIForResizing  << endl;
     //DynamicArrayOfInt new2DAI{emptyDAI.resize(2)};
-    emptyDAI.resize(2);
-     cout << "Try to resize array in smaller array" << emptyDAI << endl;
+
+    emptyDAIForResizing.resize(2);
+     cout << "Try to resize array in smaller array" << emptyDAIForResizing << endl;
 
     DynamicArrayOfInt sumVarDAIs{varLengthNotZeroDAI+varLengthNotZeroDAI};
      cout << "Sum of two DAIs: " << sumVarDAIs << endl;
@@ -54,5 +59,8 @@ int main() {
     if (varLengthNotZeroDAI != emptyDAI) {
          cout << varLengthNotZeroDAI << "!= " << emptyDAI <<endl;
     }
+
+    DynamicArrayOfInt newDAI = varLengthNotZeroDAI + emptyDAI;
+    cout << "Concatenation: " <<  newDAI << endl;
     return 0;
 }

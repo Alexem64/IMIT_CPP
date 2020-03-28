@@ -172,9 +172,6 @@ DynamicArrayOfInt operator+(const DynamicArrayOfInt &a, const DynamicArrayOfInt 
 }
 
 istream &operator>>(istream &is, DynamicArrayOfInt &a) {
-    // int size;
-    // int array[a.getLength()];
-    // is >> size;
     for (int i = 0; i < a.getLength(); i++)
         is >> a[i];
     return is;
