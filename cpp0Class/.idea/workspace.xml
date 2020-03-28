@@ -12,13 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e648aa4-70dc-46b2-953e-e578dbbac71f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../cpp2_cycleBuffer/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled1/.idea/untitled1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/DynamicArrayOfInt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cpp1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cpp2_ringBuffer/ringBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../cpp2_ringBuffer/ringBuffer.h" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,24 +32,17 @@
   </component>
   <component name="ProjectId" id="1S6C5S7SQY5bzFph8qqI7Wez1Ck" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="cpp0" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cpp0" TARGET_NAME="cpp0" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cpp0" RUN_TARGET_NAME="cpp0">
@@ -84,6 +75,7 @@
       <workItem from="1573666651138" duration="1694000" />
       <workItem from="1574490342195" duration="642000" />
       <workItem from="1574491503972" duration="630000" />
+      <workItem from="1583481449471" duration="704000" />
     </task>
     <task id="LOCAL-00001" summary="commit3&#10;all work is almost done and tested. except exception and namespace.">
       <created>1572288167890</created>

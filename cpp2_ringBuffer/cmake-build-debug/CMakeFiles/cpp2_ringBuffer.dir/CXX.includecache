@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/semen/CLionProjects/cpp2_ringBuffer/ringBuffer.cpp
+iostream
+-
+ringBuffer.h
+C:/Users/semen/CLionProjects/cpp2_ringBuffer/ringBuffer.h
+
+C:/Users/semen/CLionProjects/cpp2_ringBuffer/ringBuffer.h
+string
+C:/Users/semen/CLionProjects/cpp2_ringBuffer/string
+
