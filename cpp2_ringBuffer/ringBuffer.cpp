@@ -31,17 +31,23 @@ int main()
     cout << "###########################################" << endl << endl;
     cout << "Let's push some elements" << endl;
 
-    cout << "New size" << "\t" << "Pushed element" << "\t" <<" Capacity" << "\t" << "First element" <<endl;
+    cout << endl << "New size" << "\t" << "Pushed element" << "\t" <<" Capacity" << "\t" << "First element" <<endl;
 
     q.push(5);
     cout << q.getSize() << "\t" << q.getLast() << "\t" << q.getCapacity() << "\t" << q.getFirst() << endl;
     q.printQueue();
+
+    cout << endl << "New size" << "\t" << "Pushed element" << "\t" <<" Capacity" << "\t" << "First element" <<endl;
     q.push(3);
     cout << q.getSize() << "\t" << q.getLast() << "\t" << q.getCapacity() << "\t" << q.getFirst() << endl;
    q.printQueue();
+
+    cout << endl << "New size" << "\t" << "Pushed element" << "\t" <<" Capacity" << "\t" << "First element" <<endl;
     q.push(4);
     cout << q.getSize() << "\t" << q.getLast() << "\t" << q.getCapacity() << "\t" << q.getFirst() << endl;
    q.printQueue();
+
+    cout << endl << "New size" << "\t" << "Pushed element" << "\t" <<" Capacity" << "\t" << "First element" <<endl;
     q.push(2);
     cout << q.getSize() << "\t" << q.getLast() << "\t" << q.getCapacity() << "\t" << q.getFirst() << endl;
    q.printQueue();

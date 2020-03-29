@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/semen/CLionProjects/doubly_linked_list/abstractDoublyLinkedList.h">
+			<Option target="doubly_linked_list"/>
+		</Unit>
 		<Unit filename="C:/Users/semen/CLionProjects/doubly_linked_list/main.cpp">
 			<Option target="doubly_linked_list"/>
 		</Unit>
