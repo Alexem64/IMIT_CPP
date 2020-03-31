@@ -53,6 +53,29 @@ public:
     DoublyLinkedList &operator=(const DoublyLinkedList<Type> &obj);
     DoublyLinkedList(DoublyLinkedList<Type> &&obj);
     DoublyLinkedList &operator=(DoublyLinkedList<Type> &&obj);
+    ~DoublyLinkedList();
+
+    void insert(AbstractDoublyLinkedList<Type> *iter, Type val);
+    void deleteElem(AbstractDoublyLinkedList<Type> *iter);
+    void findElem(const Type&);
+    void clear();
+    bool isEmpty();
+    size_t getSize();
+
+    Iterator *iterator() override {
+        Iterator *iter = new Iterator(*this);
+        iter->start();
+        return iter;
+        }
+
+    Iterator *findElem(Type elem) {
+        Iterator *iter = new Iterator(*this);
+        iter->start();
+        while(!iter->isFinished()) {
+            if (iter->getElem() == elem) {return iter;}
+            iter->next();
+        }
+        //TODO: exception?
 };
 
 };
