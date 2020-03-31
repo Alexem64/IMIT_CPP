@@ -132,7 +132,6 @@ int main() {
     Box ff = cont100.getBox(3);
     cout << "Try to get third box: " << ff << endl;
 
-
     cout << "Try to get third box with []: " << cont100.operator[](3) << endl;
 
     cont100.addBox(f);

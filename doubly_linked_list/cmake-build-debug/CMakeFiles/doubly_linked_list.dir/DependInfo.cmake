@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/semen/CLionProjects/doubly_linked_list/main.cpp" "C:/Users/semen/CLionProjects/doubly_linked_list/cmake-build-debug/CMakeFiles/doubly_linked_list.dir/main.cpp.obj"
+  "D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list/doublyLinkedList.cpp" "D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list/cmake-build-debug/CMakeFiles/doubly_linked_list.dir/doublyLinkedList.cpp.obj"
+  "D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list/main.cpp" "D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list/cmake-build-debug/CMakeFiles/doubly_linked_list.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../."
   )
 
 # Targets to which this target links.

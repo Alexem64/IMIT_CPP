@@ -4,12 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/semen/CLionProjects/cpp2_ringBuffer/ringBuffer.cpp" "C:/Users/semen/CLionProjects/cpp2_ringBuffer/cmake-build-debug/CMakeFiles/cpp2_ringBuffer.dir/ringBuffer.cpp.obj"
+  "D:/Repository/C++/IMIT/CLionProjects/cpp2_ringBuffer/ringBuffer.cpp" "D:/Repository/C++/IMIT/CLionProjects/cpp2_ringBuffer/cmake-build-debug/CMakeFiles/cpp2_ringBuffer.dir/ringBuffer.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../."
   )
 
 # Targets to which this target links.

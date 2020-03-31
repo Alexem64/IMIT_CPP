@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/doubly_linked_list.dir/main.cpp.obj"
+  "CMakeFiles/doubly_linked_list.dir/doublyLinkedList.cpp.obj"
+  "doubly_linked_list.pdb"
   "doubly_linked_list.exe"
   "doubly_linked_list.exe.manifest"
-  "doubly_linked_list.pdb"
   "libdoubly_linked_list.dll.a"
 )
 

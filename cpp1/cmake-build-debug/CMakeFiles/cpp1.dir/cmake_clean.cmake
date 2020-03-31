@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cpp1.dir/DynamicArrayOfInt.cpp.obj"
   "CMakeFiles/cpp1.dir/main.cpp.obj"
+  "cpp1.pdb"
   "cpp1.exe"
   "cpp1.exe.manifest"
-  "cpp1.pdb"
   "libcpp1.dll.a"
 )
 

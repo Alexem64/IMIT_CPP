@@ -40,7 +40,6 @@ double maxWeightNotBiggerV(Box arrBox[], int arrSize, int maxV)
                 weightThatFound = arrBox[i].getWeight();
             }
         }
-
     }
     return weightThatFound;
 }

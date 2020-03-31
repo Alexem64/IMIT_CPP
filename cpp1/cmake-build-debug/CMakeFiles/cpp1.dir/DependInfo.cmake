@@ -4,13 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/semen/CLionProjects/cpp1/DynamicArrayOfInt.cpp" "C:/Users/semen/CLionProjects/cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/DynamicArrayOfInt.cpp.obj"
-  "C:/Users/semen/CLionProjects/cpp1/main.cpp" "C:/Users/semen/CLionProjects/cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/main.cpp.obj"
+  "D:/Repository/C++/IMIT/CLionProjects/cpp1/DynamicArrayOfInt.cpp" "D:/Repository/C++/IMIT/CLionProjects/cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/DynamicArrayOfInt.cpp.obj"
+  "D:/Repository/C++/IMIT/CLionProjects/cpp1/main.cpp" "D:/Repository/C++/IMIT/CLionProjects/cpp1/cmake-build-debug/CMakeFiles/cpp1.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../."
   )
 
 # Targets to which this target links.

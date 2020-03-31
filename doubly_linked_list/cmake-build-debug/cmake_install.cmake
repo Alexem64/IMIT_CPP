@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/semen/CLionProjects/doubly_linked_list
+# Install script for directory: D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/semen/CLionProjects/doubly_linked_list/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Repository/C++/IMIT/CLionProjects/doubly_linked_list/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

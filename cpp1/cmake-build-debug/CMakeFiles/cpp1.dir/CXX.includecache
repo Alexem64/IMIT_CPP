@@ -6,13 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/semen/CLionProjects/cpp1/DynamicArrayOfInt.h
+D:/Repository/C++/IMIT/CLionProjects/cpp1/DynamicArrayOfInt.cpp
+DynamicArrayOfInt.h
+D:/Repository/C++/IMIT/CLionProjects/cpp1/DynamicArrayOfInt.h
+
+D:/Repository/C++/IMIT/CLionProjects/cpp1/DynamicArrayOfInt.h
 iostream
 -
 
-C:/Users/semen/CLionProjects/cpp1/main.cpp
+D:/Repository/C++/IMIT/CLionProjects/cpp1/main.cpp
 iostream
 -
 DynamicArrayOfInt.h
-C:/Users/semen/CLionProjects/cpp1/DynamicArrayOfInt.h
+D:/Repository/C++/IMIT/CLionProjects/cpp1/DynamicArrayOfInt.h
 

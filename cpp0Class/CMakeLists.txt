@@ -1,6 +1,13 @@
-cmake_minimum_required(VERSION 3.15)
-project(cpp0)
+cmake_minimum_required(VERSION 3.14)
+project(cpp0Class)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(cpp0 main.cpp unitBox.cpp unitBox.h unitContainer.cpp unitContainer.h)
+include_directories(.)
+
+add_executable(cpp0Class
+        main.cpp
+        unitBox.cpp
+        unitBox.h
+        unitContainer.cpp
+        unitContainer.h)

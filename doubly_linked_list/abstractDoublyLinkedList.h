@@ -19,18 +19,34 @@ struct DoublyLinkedListIsEmpty {
 };
 
 template <typename Type>
-class abstractDoublyLinkedList {
+class AbstractDoublyLinkedList {
 public:
-    virtual void insert(abstractDoublyLinkedList<Type> *iter, Type val) = 0;
-    virtual void deleteElem(abstractDoublyLinkedList<Type> *iter) = 0;
+    virtual void insert(AbstractDoublyLinkedList<Type> *iter, Type val) = 0;
+    virtual void deleteElem(AbstractDoublyLinkedList<Type> *iter) = 0;
     virtual void findElem(const Type&) = 0;
     virtual void clear() = 0;
     virtual bool isEmpty() = 0;
     virtual size_t getSize() = 0;
-    virtual abstractDoublyLinkedList<Type> *iter() = 0;
-    virtual abstractDoublyLinkedList<Type> *firstElem(Type) = 0;
+    virtual AbstractDoublyLinkedList<Type> *iter() = 0;
+    virtual AbstractDoublyLinkedList<Type> *firstElem(Type) = 0;
 };
 
 
+template <typename Type>
+struct Node {
+    Type val;
+    Node *next;
+    Node *prev;
+};
+
+
+template <typename Type>
+class AbstractIterator {
+public:
+    virtual void start() = 0;
+    virtual Type getElem() = 0;
+    virtual void next() = 0;
+    virtual bool isFinished() = 0;
+};
 
 #endif //DOUBLY_LINKED_LIST_ABSTRACTDOUBLYLINKEDLIST_H

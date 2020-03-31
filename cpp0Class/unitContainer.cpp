@@ -4,7 +4,6 @@
 
 #include "unitContainer.h"
 
-
 //amount of boxes in container
 int Container::countBoxes() {
     return this->cboxes.size();
