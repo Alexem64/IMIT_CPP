@@ -9,6 +9,20 @@
 
 template<typename Type>
 class DoublyLinkedList : public AbstractDoublyLinkedList<Type> {
+private:
+    Node<Type> *root;
+    Node<Type> *current;
+    size_t size;
+
+    void createDoublyLinkedList() {
+            auto *temp = new Node<Type>;
+            root = temp;
+            temp->next = root;
+            temp->prev = root;
+            current = root;
+            size=0;
+        }
+
 public:
     class Iterator : public AbstractIterator<Type> {
     private:
@@ -16,7 +30,7 @@ public:
 
     public:
 
-        Iterator(DoublyLinkedList<Type> &curObj) {
+        explicit Iterator(DoublyLinkedList<Type> &curObj) {
             ptrList = &curObj;
         }
 
@@ -41,8 +55,16 @@ public:
             ptrList->current = ptrList->current->next;
         }
 
+        void prev() override {
+            ptrList->current = ptrList->current->prev;
+        }
+
         bool isFinished() override {
             return ptrList->current == ptrList->root;
+        }
+
+        Node<Type> *getNode() {
+            return ptrList->current;
         }
     };
 
@@ -51,33 +73,171 @@ public:
     DoublyLinkedList();
     DoublyLinkedList(const DoublyLinkedList<Type> &obj);
     DoublyLinkedList &operator=(const DoublyLinkedList<Type> &obj);
-    DoublyLinkedList(DoublyLinkedList<Type> &&obj);
-    DoublyLinkedList &operator=(DoublyLinkedList<Type> &&obj);
+    DoublyLinkedList(DoublyLinkedList<Type> &&obj) noexcept;
+    DoublyLinkedList &operator=(DoublyLinkedList<Type> &&obj) noexcept;
     ~DoublyLinkedList();
 
-    void insert(AbstractDoublyLinkedList<Type> *iter, Type val);
-    void deleteElem(AbstractDoublyLinkedList<Type> *iter);
-    void findElem(const Type&);
+
+    void insert(AbstractIterator<Type> *iter, Type elem);
+    void deleteElem(AbstractIterator<Type> *iter);
+    void pushElem(const Type &elem);
     void clear();
     bool isEmpty();
     size_t getSize();
 
+
     Iterator *iterator() override {
-        Iterator *iter = new Iterator(*this);
+        auto *iter = new Iterator(*this);
         iter->start();
         return iter;
         }
 
     Iterator *findElem(Type elem) {
-        Iterator *iter = new Iterator(*this);
+        auto *iter = new Iterator(*this);
         iter->start();
         while(!iter->isFinished()) {
             if (iter->getElem() == elem) {return iter;}
             iter->next();
         }
-        //TODO: exception?
+        throw ElemIsNotFound("Elem is not found");
 };
 
 };
+
+
+template <typename Type>
+DoublyLinkedList<Type>::DoublyLinkedList() {
+    createDoublyLinkedList();
+    }
+
+template <typename Type>
+DoublyLinkedList<Type>::DoublyLinkedList(const DoublyLinkedList<Type> &obj) {
+    createDoublyLinkedList();
+    Node<Type> *ptr = obj.root->next;
+    for (size_t i = 0; i < obj.size; i++) {
+        pushElem(ptr->val);
+        ptr = ptr->next;
+    }
+}
+
+template <typename Type>
+bool DoublyLinkedList<Type>::isEmpty() {return size==0;}
+
+
+template <typename Type>
+size_t DoublyLinkedList<Type>::getSize() {return size;}
+
+
+template <typename Type>
+DoublyLinkedList<Type> &DoublyLinkedList<Type>::operator=(const DoublyLinkedList<Type> &obj) {
+    if (this == &obj) {return *this;}
+    if (!isEmpty()) {clear();}
+
+    Node<Type> *ptr = obj.root->next;
+    for (size_t i = 0; i<obj.size; i++) {
+        pushElem(ptr->val);
+        ptr = ptr->next;
+    }
+
+    delete ptr;
+    return *this;
+}
+
+template <typename Type>
+DoublyLinkedList<Type>::DoublyLinkedList<Type>(DoublyLinkedList<Type> &&obj) {
+    createDoublyLinkedList();
+
+    size = obj.size;
+    root = obj.root;
+    current = obj.current;
+
+    obj.size = 0;
+    obj.root = nullptr;
+    obj.current = nullptr;
+}
+
+template <typename Type>
+DoublyLinkedList<Type> &DoublyLinkedList<Type>::operator=(DoublyLinkedList<Type> &&obj) {
+    if (this->root == obj.root) {return *this;}
+    if (!isEmpty()) {clear();}
+
+    size = obj.size;
+    root = obj.root;
+    current = obj.current;
+
+    obj.size = 0;
+    obj.root = nullptr;
+    obj.current = nullptr;
+}
+
+template <typename Type>
+void DoublyLinkedList<Type>::insert(AbstractIterator<Type> *iter, const Type elem) {
+    auto *insertedNode = new Node<Type>;
+    insertedNode->val = elem;
+    Node<Type> *currentNode = iter->getNode();
+    Node<Type> *nextNode = currentNode->next;
+
+    currentNode->next = insertedNode;
+    insertedNode->prev = currentNode;
+    insertedNode->next = nextNode;
+    nextNode->prev = insertedNode;
+
+    size++;
+}
+
+template <typename Type>
+void DoublyLinkedList<Type>::deleteElem(AbstractIterator<Type> *iter) {
+    if (isEmpty()) throw DoublyLinkedListIsEmpty("List is empty!");
+    Node<Type> *deletedNode = iter->getNode();
+    Node<Type> *nextNode = deletedNode->next;
+    Node<Type> *prevNode = deletedNode->prev;
+
+    nextNode->prev = prev;
+    prevNode->next = next;
+    delete deletedNode;
+
+    iter->next();
+    size--;
+}
+
+template <typename Type>
+void DoublyLinkedList<Type>::pushElem(const Type &elem) {
+    auto *pushedNode = new Node<Type>;
+    pushedNode->val = elem;
+    pushedNode->next = current->next;
+    pushedNode->prev = current;
+
+    Node<Type> *nextNode = current->next;
+    nextNode->prev = pushedNode;
+    current->next = pushedNode;
+
+    current = current->next;
+    size++;
+}
+
+
+template <typename Type>
+void DoublyLinkedList<Type>::clear() {
+    if (isEmpty()) {throw DoublyLinkedListIsEmpty("List is empty");}
+
+    current = root;
+
+    while (!isEmpty()) {
+    Node<Type> *nextNode = current->next;
+    nextNode->prev = current->prev;
+    current->prev->next = nextNode;
+    delete current;
+
+    current = nextNode;
+    size--;
+    }
+}
+
+template <typename Type>
+DoublyLinkedList<Type>::~DoublyLinkedList() {
+    clear();
+    root = nullptr;
+    current = nullptr;
+}
 
 #endif //DOUBLY_LINKED_LIST_DOUBLYLINKEDLIST_H
