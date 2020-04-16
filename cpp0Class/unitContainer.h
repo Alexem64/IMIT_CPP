@@ -75,9 +75,9 @@ public:
 
     bool delBox(int);
 
-    const Box &operator[](const int ind) const;
+    const Box &operator[](int ind) const;
 
-    Box &operator[](const int ind);
+    Box &operator[](int ind);
 
 };
 
