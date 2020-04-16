@@ -1,0 +1,5 @@
+broken_IDE/
+cpp0/
+*CMakeLists.txt
+cmake-buid-debug/
+.idea/
