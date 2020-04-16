@@ -55,7 +55,7 @@ public:
             ptrList->current = ptrList->current->next;
         }
 
-        void prev() override {
+        void previous() override {
             ptrList->current = ptrList->current->prev;
         }
 
@@ -65,6 +65,18 @@ public:
 
         Node<Type> *getNode() {
             return ptrList->current;
+        }
+
+        void printListFromStart() {
+            start();
+            while (!isFinished()) {
+                cout << "iter: " << getElem() << endl;
+                next();
+            }
+        }
+
+        bool iteratorIsFounded() {
+            return (ptrList = true);
         }
     };
 
@@ -86,7 +98,7 @@ public:
     size_t getSize();
 
 
-    Iterator *iterator() override {
+    Iterator *iter() override {
         auto *iter = new Iterator(*this);
         iter->start();
         return iter;
@@ -144,7 +156,7 @@ DoublyLinkedList<Type> &DoublyLinkedList<Type>::operator=(const DoublyLinkedList
 }
 
 template <typename Type>
-DoublyLinkedList<Type>::DoublyLinkedList<Type>(DoublyLinkedList<Type> &&obj) {
+DoublyLinkedList<Type>::DoublyLinkedList(DoublyLinkedList<Type> &&obj) noexcept {
     createDoublyLinkedList();
 
     size = obj.size;
@@ -157,7 +169,7 @@ DoublyLinkedList<Type>::DoublyLinkedList<Type>(DoublyLinkedList<Type> &&obj) {
 }
 
 template <typename Type>
-DoublyLinkedList<Type> &DoublyLinkedList<Type>::operator=(DoublyLinkedList<Type> &&obj) {
+DoublyLinkedList<Type> &DoublyLinkedList<Type>::operator=(DoublyLinkedList<Type> &&obj) noexcept {
     if (this->root == obj.root) {return *this;}
     if (!isEmpty()) {clear();}
 
@@ -189,14 +201,15 @@ template <typename Type>
 void DoublyLinkedList<Type>::deleteElem(AbstractIterator<Type> *iter) {
     if (isEmpty()) throw DoublyLinkedListIsEmpty("List is empty!");
     Node<Type> *deletedNode = iter->getNode();
+    iter->next();
     Node<Type> *nextNode = deletedNode->next;
     Node<Type> *prevNode = deletedNode->prev;
 
-    nextNode->prev = prev;
-    prevNode->next = next;
+    nextNode->prev = deletedNode->prev;
+    prevNode->next = deletedNode->next;
+
     delete deletedNode;
 
-    iter->next();
     size--;
 }
 
@@ -231,6 +244,8 @@ void DoublyLinkedList<Type>::clear() {
     current = nextNode;
     size--;
     }
+    auto *iter = new Iterator(*this);
+    iter->start();
 }
 
 template <typename Type>

@@ -24,7 +24,7 @@ public:
     virtual void start() = 0;
     virtual Type getElem() = 0;
     virtual void next() = 0;
-    virtual void prev() = 0;
+    virtual void previous() = 0;
     virtual bool isFinished() = 0;
     virtual Node<Type> *getNode() = 0;
 };
