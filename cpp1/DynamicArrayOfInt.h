@@ -9,7 +9,6 @@ using namespace std;
 
 class DynamicArrayOfInt : public error_code {
     int size;
-    int extraSize;
     int *Array;
 
 public:
@@ -41,9 +40,7 @@ public:
 //remove constructor
     DynamicArrayOfInt(DynamicArrayOfInt &&obj) noexcept {
         size = obj.size;
-        Array = new int[obj.size];
-        for (int i = 0; i < size; i++)
-            Array[i] = obj.Array[i];
+        Array = obj.Array;
         obj.size = 0;
         obj.Array = nullptr;
     }
@@ -60,7 +57,7 @@ public:
         return this->Array[ind];
     }
 
-    const int &operator[](const int ind) const {
+    const int &operator[](int ind) const {
         return this->Array[ind];
     }
 
@@ -83,11 +80,11 @@ public:
     DynamicArrayOfInt&operator=(DynamicArrayOfInt&&);
 
 };
-    DynamicArrayOfInt  operator + (const DynamicArrayOfInt & v1, const DynamicArrayOfInt &v2);
+    DynamicArrayOfInt operator+(const DynamicArrayOfInt & v1, const DynamicArrayOfInt &v2);
 
     istream &operator>>(istream &is, DynamicArrayOfInt &a);
 
-    ostream &operator<<(ostream &os, DynamicArrayOfInt &a);
+    ostream &operator<<(ostream &os, const DynamicArrayOfInt &a);
 
     struct UnequalLengths{
         string message;

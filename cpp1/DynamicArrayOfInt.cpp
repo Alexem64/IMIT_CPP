@@ -11,17 +11,20 @@ void DynamicArrayOfInt::resize(const int newSize) {
     //создали новый массив размером newSize, конструктор заполняет все элементы 0
     int *newArray = new int [newSize];
 
-    for (int i=0; (i<newSize)&&(i<this->size); i++) {
+    for (int i=0; (i < newSize)&&(i < this->size); i++) {
         newArray[i] = this->Array[i];
      }
-    if (newSize>this->size) {
-        for (int i=this->size; i<newSize; i++) {
+    if (newSize > this->size) {
+        for (int i = this->size; i < newSize; i++) {
             newArray[i] = 0;
         }
     }
+    delete []Array;
     this->Array = newArray;
-    this->size=newSize;
-   // return newDAI;
+    this->size = newSize;
+
+
+    // return newDAI;
 
     /*
     int minSize;
@@ -76,7 +79,7 @@ bool DynamicArrayOfInt::operator>(const DynamicArrayOfInt &a) {
         if (this->Array[i] < a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст до size-1 совпадает
-        if (i == this->size--)
+        if (i == this->size - 1)
             return this->size > a.size;
     }
     return true;
@@ -88,7 +91,7 @@ bool DynamicArrayOfInt::operator>=(const DynamicArrayOfInt &a) {
         if (this->Array[i] < a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if (i == this->size--)
+        if (i == this->size - 1)
             return this->size >= a.size;
     }
     return true;
@@ -100,7 +103,7 @@ bool DynamicArrayOfInt::operator<(const DynamicArrayOfInt &a) {
         if (this->Array[i] > a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if (i == this->size--) return this->size < a.size;
+        if (i == this->size - 1) return this->size < a.size;
     }
     return true;
 }
@@ -111,7 +114,7 @@ bool DynamicArrayOfInt::operator<=(const DynamicArrayOfInt &a) {
         if (this->Array[i] > a.Array[i]) return false;
         //если дошли до последнего символа, сравниваем длину.
         //очевидно, что если верхние условия не отработали, то текст совпадает
-        if (i == this->size--) return this->size <= a.size;
+        if (i == this->size - 1) return this->size <= a.size;
     }
     return true;
 }
@@ -125,6 +128,7 @@ bool DynamicArrayOfInt::operator<=(const DynamicArrayOfInt &a) {
 DynamicArrayOfInt &DynamicArrayOfInt::operator=(const DynamicArrayOfInt &a) {
     if (this == &a)
         return *this;
+    delete []Array;
 
     size = a.size;
     Array = new int[size];
@@ -141,10 +145,9 @@ DynamicArrayOfInt &DynamicArrayOfInt::operator=(DynamicArrayOfInt &&a) {
     delete []Array;
 
     size = a.size;
-    Array = new int[size];
-    for (int i = 0; i < size; i++)
-        Array[i] = a.Array[i];
+    Array = a.Array;
     a.Array = nullptr;
+    a.size = 0;
 
     return *this;
 }

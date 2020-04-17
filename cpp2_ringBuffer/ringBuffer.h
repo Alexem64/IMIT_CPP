@@ -65,13 +65,13 @@ public:
 
     int getLast();
 
-    void printQueue();
+    void printQueue() const;
 
     void push(const int &elem);
 
     void clear();
 
-    bool isEmpty() {
+    bool isEmpty() const {
         return size == 0;
     }
 
@@ -173,7 +173,7 @@ int Queue::shift() {
 }
 
 
-void Queue::printQueue() {
+void Queue::printQueue() const {
     if (isEmpty()) throw QueueIsNull("Queue is empty");
     cout << endl << "Current queue: " << endl;
     cout << "#" << "\t" << "queue element" << endl;
