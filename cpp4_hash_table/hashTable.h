@@ -37,8 +37,7 @@ public :
     virtual void next() = 0;
     virtual bool isEmpty() = 0;
     virtual TValue getValue() = 0;
-    Data<TKey, TValue> *begin;
-    Data<TKey, TValue> *current;
+   // Data<TKey, TValue> *begin;
 
 };
 
@@ -77,23 +76,40 @@ private:
     static const int DEFAULT_SIZE = 8;
 public:
     class Iterator : public AbstractIterator<TKey, TValue> {
+    private:
+        Data<TKey, TValue> *current;
     public:
         Iterator(Data<TKey, TValue> *first) {
-            this->begin = first;
-            this->start();
+            this->current = first;
         }
 
         ~Iterator() {
-            delete this->begin;
             delete this->current;
         }
 
         void start() override {
-            this->current = this->begin;
+            for (int i=0; i<hash_table_size; i++) {
+                if  (table[i] != nullptr) {
+                    this->current = table[i];
+                    return;
+                }
+            }
+            this->current = nullptr;
         }
 
         void next() override {
-            this->current = this->current->next;
+            if (this->current->next != nullptr) {
+                this->current = this->current->next;
+            }
+            else {
+            size_t current_table = hash(this->current->key);
+            for (int i=0; i < (hash_table_size - current_table); i++) {
+                if  (table[i] != nullptr) {
+                    this->current = table[i];
+                    return;
+                    }
+                }
+            }
         }
 
         bool isEmpty() override {
@@ -118,6 +134,11 @@ public:
     TValue getNodeValue(const TKey &key);
     inline int size() const {return hash_table_size;}
 
+    Iterator *iterator() {
+        Iterator *iterator = new Iterator(table[0]);
+        iterator->start();
+        return iterator;
+    }
 };
 
 
@@ -221,6 +242,22 @@ void HashTable<TKey, TValue>::deleteNode(const TKey &key) {
 
 template <typename TKey, typename TValue>
 TKey HashTable<TKey, TValue>::findNode(const TValue &value) const {
+    if (isEmpty())
+        throw HashTableIsEmptyExcept("Table is empty");
+
+    for (int i=0; i<hash_table_size; i++) {
+        Data<TKey, TValue> *currentNode = table[i];
+
+        while (currentNode->next != nullptr) {
+            if (currentNode->value == value) {
+                return currentNode->key;
+            }
+            currentNode = currentNode->next;
+        }
+        //если дошли до конца и не нашли элемент, то его нет
+    }
+
+            throw ElemIsNotFoundExcept("Elem is not found");
 
 }
 
