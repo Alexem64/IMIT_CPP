@@ -23,21 +23,29 @@
 
 #include <string>
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 struct Data {
     TKey key;
     TValue value;
     Data *next;
 };
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 class AbstractIterator {
 public :
-    virtual void start() =0 ;
+    virtual void start() = 0;
+
     virtual void next() = 0;
+
     virtual bool isEmpty() = 0;
+
     virtual TValue getValue() = 0;
-   // Data<TKey, TValue> *begin;
+
+    virtual Data<TKey, TValue> *getTable() = 0;
+
+protected:
+    Data<TKey, TValue> *begin;
+    Data<TKey, TValue> *current;
 
 };
 
@@ -67,49 +75,39 @@ struct ElemIsNotFoundExcept {
 };
 
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 class HashTable {
 private:
-    size_t hash_table_size;
+    size_t hashTableSize;
     Data<TKey, TValue> **table;
-    inline int hash(const TKey key) const { return key % hash_table_size; }
+
+    inline int hash(TKey key) const { return key % hashTableSize; }
+
     static const int DEFAULT_SIZE = 8;
+
+    Data<TKey, TValue> *listBegin;
+    Data<TKey, TValue> *listEnd;
+    size_t listSize;
+
 public:
     class Iterator : public AbstractIterator<TKey, TValue> {
-    private:
-        Data<TKey, TValue> *current;
     public:
         Iterator(Data<TKey, TValue> *first) {
-            this->current = first;
+            this->begin = first;
+            this->start();
         }
 
         ~Iterator() {
             delete this->current;
+            delete this->begin;
         }
 
         void start() override {
-            for (int i=0; i<hash_table_size; i++) {
-                if  (table[i] != nullptr) {
-                    this->current = table[i];
-                    return;
-                }
-            }
-            this->current = nullptr;
+            this->current = this->begin;
         }
 
         void next() override {
-            if (this->current->next != nullptr) {
-                this->current = this->current->next;
-            }
-            else {
-            size_t current_table = hash(this->current->key);
-            for (int i=0; i < (hash_table_size - current_table); i++) {
-                if  (table[i] != nullptr) {
-                    this->current = table[i];
-                    return;
-                    }
-                }
-            }
+            this->current = this->current->next;
         }
 
         bool isEmpty() override {
@@ -120,60 +118,77 @@ public:
             return this->current->value;
         }
 
+        Data<TKey, TValue> *getTable() override {
+            return this->current;
+        }
+
     };
 
     HashTable();
-    HashTable(int table_size);
+
+    HashTable(int tableSize);
+
     virtual ~HashTable();
 
-    void addNode(const TKey &key, const TValue &value);
-    void deleteNode(const TKey &key);
-    TKey findNode(const TValue &value) const;
+    void addNode(TKey key, TValue value);
+
+    void deleteNode(TKey key);
+
+    TKey findNode(TValue value) const;
+
     bool isEmpty() const;
+
     void clear();
-    TValue getNodeValue(const TKey &key);
-    inline int size() const {return hash_table_size;}
+
+    TValue getNodeValue(TKey key);
+
+    inline int size() const { return hashTableSize; }
 
     Iterator *iterator() {
-        Iterator *iterator = new Iterator(table[0]);
+        Iterator *iterator = new Iterator(listBegin);
         iterator->start();
         return iterator;
     }
 };
 
 
-
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 HashTable<TKey, TValue>::HashTable() {
     this->hash_table_size = DEFAULT_SIZE;
-    this->table = new Data<TKey, TValue>*[hash_table_size];
-    for(int i=0; i<hash_table_size; i++) {
+    this->table = new Data<TKey, TValue> *[hashTableSize];
+    for (size_t i = 0; i < hashTableSize; i++) {
         table[i] = nullptr;
     }
+    listSize = 0;
+    listBegin = new Data<TKey, TValue>;
+    listEnd = listBegin;
 }
 
 
-template <typename TKey, typename TValue>
-HashTable<TKey, TValue>::HashTable(int table_size) {
-    if (table_size < 0)
+template<typename TKey, typename TValue>
+HashTable<TKey, TValue>::HashTable(int tableSize) {
+    if (tableSize < 0)
         throw SizeIncorrectExcept("Size is incorrect");
-    this->hash_table_size = table_size;
-    this->table = new Data<TKey, TValue>*[table_size];
-    for(int i=0; i<table_size; i++) {
+    this->hashTableSize = tableSize;
+    this->table = new Data<TKey, TValue> *[tableSize];
+    for (int i = 0; i < tableSize; i++) {
         table[i] = nullptr;
     }
+    listSize = 0;
+    listBegin = new Data<TKey, TValue>;
+    listEnd = listBegin;
 }
 
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 HashTable<TKey, TValue>::~HashTable() {
     this->clear();
-    hash_table_size = 0;
+    hashTableSize = 0;
 }
 
 
-template <typename TKey, typename TValue>
-void HashTable<TKey, TValue>::addNode(const TKey &key, const TValue &value) {
+template<typename TKey, typename TValue>
+void HashTable<TKey, TValue>::addNode(TKey key, TValue value) {
     //чтобы не вычислять постоянно хэш, вычислим и запишем
     int hashTemp = hash(key);
     //если записей по данному ключу нет, то выдяляем память и складываем туда значения Key, Value, указатель на null.
@@ -182,24 +197,40 @@ void HashTable<TKey, TValue>::addNode(const TKey &key, const TValue &value) {
         table[hashTemp]->key = key;
         table[hashTemp]->value = value;
         table[hashTemp]->next = nullptr;
-    }
-    else //если записи есть, то надо дойти до последнего элемента по данному ключу (у него указатель на null) и поместить элемент за ним
-        {
+    } else //если записи есть, то надо дойти до последнего элемента по данному ключу (у него указатель на null) и поместить элемент за ним
+    {
         Data<TKey, TValue> *last = table[hashTemp];
-        while (last->next != nullptr)
-            { last = last->next; }
+        while (last->next != nullptr) { last = last->next; }
 
-        Data<TKey, TValue> *newNode = new Data<TKey, TValue>;
+        auto *newNode = new Data<TKey, TValue>;
         newNode->key = key;
         newNode->value = value;
         newNode->next = nullptr;
         last->next = newNode;
-        }
+    }
+
+    //дублируем в отдельный список
+    if (listSize != 0) {
+        auto *current = new Data<TKey, TValue>;
+        current->key = key;
+        current->value = value;
+        current->next = nullptr;
+        listEnd->next = current;
+        listEnd = current;
+    } else {
+        auto *current = new Data<TKey, TValue>;
+        current->key = key;
+        current->value = value;
+        current->next = nullptr;
+        listBegin = current;
+        listEnd = listBegin;
+    }
+    listSize++;
 }
 
 
-template <typename TKey, typename TValue>
-void HashTable<TKey, TValue>::deleteNode(const TKey &key) {
+template<typename TKey, typename TValue>
+void HashTable<TKey, TValue>::deleteNode(TKey key) {
     if (isEmpty())
         throw HashTableIsEmptyExcept("Table is empty");
 
@@ -208,15 +239,13 @@ void HashTable<TKey, TValue>::deleteNode(const TKey &key) {
     if (table[hashTemp] == nullptr) {
         table[hashTemp]->key = 0;
         table[hashTemp]->value = 0;
-    }
-    else {
+    } else {
         //если у первого элемента совпадает key, его необходимо удалить, сохранив все последующие элементы списка
         if (table[hashTemp]->key == key) {
             Data<TKey, TValue> *temp = table[hashTemp];
             table[hashTemp] = temp->next;
             delete temp;
-        }
-        else {
+        } else {
             //если первый элемент не совпдает, необходимо проверить весь список с данным значением хэша
             Data<TKey, TValue> *currentNode = table[hashTemp];
             while ((currentNode->next->key != key) || (currentNode->next != nullptr))
@@ -229,23 +258,46 @@ void HashTable<TKey, TValue>::deleteNode(const TKey &key) {
             if (currentNode->next->next == nullptr) {
                 delete currentNode->next;
                 currentNode->next = nullptr;
-            }
-            else {
+            } else {
                 Data<TKey, TValue> *temp = currentNode->next->next;
                 delete currentNode->next;
                 currentNode->next = temp;
             }
         }
     }
+
+    //дублируем удаление в списке
+    if (listBegin->key == key) {
+        Data<TKey, TValue> *temp = listBegin;
+        listBegin = temp->next;
+        delete temp;
+    } else {
+        Data<TKey, TValue> *current = listBegin;
+        while ((current->next->key != key) || (current->next != nullptr))
+            current = current->next;
+
+        if (current->next == nullptr)
+            throw ElemIsNotFoundExcept("Elem is not found");
+
+        if (current->next->next == nullptr) {
+            delete current->next;
+            current->next = nullptr;
+            listEnd = current;
+        } else {
+            Data<TKey, TValue> *temp = current->next->next;
+            delete current->next;
+            current->next = temp;
+        }
+    }
 }
 
 
-template <typename TKey, typename TValue>
-TKey HashTable<TKey, TValue>::findNode(const TValue &value) const {
+template<typename TKey, typename TValue>
+TKey HashTable<TKey, TValue>::findNode(TValue value) const {
     if (isEmpty())
         throw HashTableIsEmptyExcept("Table is empty");
 
-    for (int i=0; i<hash_table_size; i++) {
+    for (int i = 0; i < hashTableSize; i++) {
         Data<TKey, TValue> *currentNode = table[i];
 
         while (currentNode->next != nullptr) {
@@ -257,26 +309,27 @@ TKey HashTable<TKey, TValue>::findNode(const TValue &value) const {
         //если дошли до конца и не нашли элемент, то его нет
     }
 
-            throw ElemIsNotFoundExcept("Elem is not found");
+    throw ElemIsNotFoundExcept("Elem is not found");
 
 }
 
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 bool HashTable<TKey, TValue>::isEmpty() const {
-    for (int i=0; i<hash_table_size; i++) {
-        if (this->table[i] != nullptr) return false;
+    for (int i = 0; i < hashTableSize; i++) {
+        if (this->table[i] != nullptr)
+            return false;
     }
     return true;
 }
 
 
-template <typename TKey, typename TValue>
+template<typename TKey, typename TValue>
 void HashTable<TKey, TValue>::clear() {
     if (isEmpty()) return;
 
     //проходим по всем индексам (хэшам), очищаем все элементы списков, скидываем указатель этого индекса в null
-    for(int i=0; i<hash_table_size; i++) {
+    for (size_t i = 0; i < hashTableSize; i++) {
         Data<TKey, TValue> *currentNode = table[i];
         Data<TKey, TValue> *temp = currentNode;
         while (currentNode != nullptr) {
@@ -287,11 +340,22 @@ void HashTable<TKey, TValue>::clear() {
         delete currentNode;
         this->table[i] = nullptr;
     }
+    //очищаем список
+    Data<TKey, TValue> *current = listBegin;
+    Data<TKey, TValue> *temp = current;
+    while (current != listEnd) {
+        temp = current;
+        current = current->next;
+        delete temp;
+    }
+    delete current;
+
+    listSize = 0;
 }
 
 
-template <typename TKey, typename TValue>
-TValue HashTable<TKey, TValue>::getNodeValue(const TKey &key) {
+template<typename TKey, typename TValue>
+TValue HashTable<TKey, TValue>::getNodeValue(TKey key) {
     if (isEmpty())
         throw HashTableIsEmptyExcept("Table is empty");
 
@@ -303,8 +367,7 @@ TValue HashTable<TKey, TValue>::getNodeValue(const TKey &key) {
         while (currentNode->key != key)
             currentNode = currentNode->next;
         founded_val = currentNode->value;
-    }
-    else {
+    } else {
         if (table[hashTemp]->key == key)
             founded_val = table[hashTemp]->value;
         else
