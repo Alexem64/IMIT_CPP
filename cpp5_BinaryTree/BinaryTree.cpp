@@ -183,7 +183,7 @@ bool operator==(const BinaryTree &lTree, const BinaryTree &rTree) {
 bool equals(const BinaryTree::Node *lNode, const BinaryTree::Node *rNode) {
     if (lNode == nullptr || rNode == nullptr)
         return lNode == rNode;
-    return lNode->value == rNode->value && equals(lNode->left, rNode->right) && equals(lNode->right, rNode->right);
+    return lNode->value == rNode->value && equals(lNode->left, rNode->left) && equals(lNode->right, rNode->right);
 }
 
 void BinaryTree::copy(const BinaryTree &tree) {

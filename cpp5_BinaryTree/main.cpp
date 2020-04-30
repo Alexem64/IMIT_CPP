@@ -59,11 +59,37 @@ int main() {
         std::cout << err.message << std::endl;
     }
 
+    std::cout << "Let's test our operator of comparision " << std::endl;
     BinaryTree btree1(5);
     BinaryTree btree2 = btree;
 
+    std::cout << "Here is our tree: " << btree << std::endl;
+    std::cout << "Here is our new tree1: " << btree1 << std::endl;
+    std::cout << "Here is our copy of tree - btree2: " << btree2 << std::endl;
+
     std::cout << "Let's compare trees" << (btree == btree1 ? " btree == btree1" : " btree != btree1") << std::endl;
     std::cout << "Let's compare trees" << (btree == btree2 ? " btree == btree2" : " btree != btree2") << std::endl;
+
+    std::cout << "In previous commit I missed left and right and comparision didn't work correctly - life's so unfair!" << std::endl;
+
+    std::cout << "Let's test our remove constructor " << std::endl;
+
+    std::cout << "Let's test our copy constructor " << std::endl;
+    BinaryTree btree3(btree2);
+    std::cout << "Let's compare trees btree3 and btree" << (btree == btree3 ? " btree == btree3" : " btree != btree3") << std::endl;
+
+    std::cout << "Let's test our move constructor " << std::endl;
+    BinaryTree btree4(std::move(btree2));
+    std::cout << "Let's compare trees btree4 and btree" << (btree == btree4 ? " btree == btree4" : " btree != btree4") << std::endl;
+
+    std::cout << "Let's compare trees btree2 and btree" << (btree == btree2 ? " btree == btree2" : " btree != btree2") << std::endl;
+
+    std::cout << "Here is our tree: " << btree << std::endl;
+    std::cout << "Here is our tree1: " << btree1 << std::endl;
+    std::cout << "Here is our copy of tree - btree2, which was removed: " << btree2 << std::endl;
+    std::cout << "Here is our copy of tree - btree3, which was created with copy constructor: " << btree3 << std::endl;
+    std::cout << "Here is our copy of tree - btree4, which was created with remove constructor: " << btree4 << std::endl;
+
 
     return 0;
 }
