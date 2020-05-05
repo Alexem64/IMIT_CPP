@@ -44,6 +44,9 @@ private:
     void remove(string word, Node *&root);
     int countAllWords(Node *root) const;
     void print(ostream &stream, const Node *root) const;
+    Node* min(Node *root) const;
+    Node* findNext(string word, Node *root) const;
+
     friend bool equal(const Node *left, const Node *right);
 
 public:
@@ -60,6 +63,7 @@ public:
     void add(string word);
     void remove(string word);
     int countAllWords() const;
+    string findNext(string word) const;
 
     void copy(const BinarySearchTree &other);
     void clear();

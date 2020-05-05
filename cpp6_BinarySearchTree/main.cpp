@@ -14,8 +14,11 @@ int main() {
     tree1.add("Test123");
     tree1.add("Test123");
     tree1.add("Testtest");
+    tree1.add("Test111");
+    tree1.add("Test112");
     tree1.add("Test123");
     tree1.add("Test123");
+    tree1.add("Test333");
     tree1.add("Testtest");
     tree1.add("Testtest");
     tree1.add("Abyrvalg");
@@ -43,18 +46,26 @@ int main() {
     cout << "If you haven't seen anything between strings with stars - tree1 is empty" << endl;
 
     cout << "Let's try to clear something" << endl;
-    tree4.clear();
-    cout << "Here grew the tree4 and now it's empty: " << tree4 << endl;
-    cout << "Let's remove 'Test' from tree3" << endl;
-    cout << tree3 << endl;
-    tree3.remove("Test");
-    cout << "Let's remove 'Test' from tree3 again and again" << endl;
-    tree3.remove("Test");
-    cout << tree3 << endl;
-    tree3.remove("Test");
-    cout << tree3 << endl;
-    cout << "It doesn't work correctly, need time to find kosyaki, but I've run out of time for now" << endl;
+ //   tree4.clear();
+  //  cout << "Here grew the tree4 and now it's empty: " << tree4 << endl;
 
+    cout << "Let's remove 'Test' from tree3" << endl;
+    cout << "Here is our tree3: " << endl << tree3 << endl;
+    tree3.remove("Test");
+    cout << "Here is our tree3: " << endl << tree3 << endl;
+    tree3.remove("Test");
+    cout << "Here is our tree3: " << endl << tree3 << endl;
+
+    cout << "Here is our tree4: " << endl << tree4 << endl;
+
+    tree4.remove("Test123");
+    cout << "Here is our tree4 without Test123: " << endl << tree4 << endl;
+    tree4.remove("Test123");
+    tree4.remove("Test123");
+    tree4.remove("Test123");
+    cout << "Here is our tree4 without other Test123: " << endl << tree4 << endl;
+    tree4.remove("Test123");
+    cout << "Here is our tree4 without all Test123: " << endl << tree4 << endl;
 
 
     return 0;

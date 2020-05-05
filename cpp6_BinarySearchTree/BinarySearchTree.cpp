@@ -111,6 +111,37 @@ void BinarySearchTree::add(string word, Node *&currentNode) {
     return;
 }
 
+// находим минимальный элемент в (под)дереве
+BinarySearchTree::Node* BinarySearchTree::min(BinarySearchTree::Node *currentNode) const {
+    if (currentNode == nullptr)
+        return nullptr;
+    if (currentNode->left == nullptr)
+        return currentNode;
+    return min(currentNode->left);
+}
+/*
+string BinarySearchTree::findNext(string word) const {
+    return 0; //findNext(word, root)
+}
+
+//метод для нахождения следующего элемента - требуется для реализации insert
+BinarySearchTree::Node* BinarySearchTree::findNext(string word, BinarySearchTree::Node *currentNode) const {
+    if (currentNode == nullptr)
+        return nullptr;
+    Node *way = root;
+    Node *successor = nullptr;
+    while (way != nullptr) {
+        if (way->word > currentNode->word) {
+            successor = way;
+            way = way->left;
+        }
+        else {
+            way = way->right;
+        }
+    }
+    return successor;
+} */
+
 void BinarySearchTree::remove(string word) {
     remove(word, root);
 }
@@ -134,13 +165,24 @@ void BinarySearchTree::remove(string word, BinarySearchTree::Node *&currentNode)
                 currentNode = currentNode->right;
                 delete ptrCurrent;
                 return;
-            }
-            if (currentNode->right == nullptr) {
+            } else if (currentNode->right == nullptr) {
                 currentNode = currentNode->left;
                 delete ptrCurrent;
                 return;
-            }
-            if (currentNode->left == nullptr && currentNode->right == nullptr) {
+            } else if (currentNode->left == nullptr && currentNode->right == nullptr) {
+                delete ptrCurrent;
+                return;
+            } else {
+             //    cout << "CurNode: " << currentNode << currentNode->word << currentNode->left->word << currentNode->right->word << endl;
+                Node *minNode = min(currentNode->right);
+             //    cout << "minNode: " << minNode << minNode->word  << endl;
+                currentNode->word = minNode->word;
+                currentNode->counter = minNode->counter;
+                remove(minNode->word, currentNode->right);
+               // cout << "CurNode: " << currentNode << currentNode->word << currentNode->left->word << currentNode->right->word << endl;
+                minNode = nullptr;
+                ptrCurrent = nullptr;
+                delete minNode;
                 delete ptrCurrent;
                 return;
             }
@@ -190,31 +232,3 @@ bool equal(const BinarySearchTree::Node *lNode, const BinarySearchTree::Node *rN
     return ((lNode->word == rNode->word) && (lNode->counter == rNode->counter) &&
             equal(lNode->left, rNode->left) && equal(lNode->right, rNode->right));
 }
-
-/*
-Node* copy(const Node *root);
-void stolen(BinarySearchTree &tree);
-void clear(Node *&currentNode);
-int findCounter(string word, Node *root);
-void add(string word, Node *&root);
-void remove(string word, Node *&root);
-int countAllWords(Node *root);
-void print(ostream &stream, Node *root);
-friend bool equal(const Node *left, const Node *right);
-
-BinarySearchTree();
-BinarySearchTree(string word);
-BinarySearchTree(const BinarySearchTree &other);
-BinarySearchTree(BinarySearchTree &&other);
-
-int findCounter(string word);
-void add(string word);
-void remove(string word);
-int countAllWords();
-
-void copy(const BinarySearchTree &other);
-void clear();
-
-friend ostream &operator <<(ostream &stream, const BinarySearchTree &tree);
-friend  bool operator==(const BinarySearchTree &lTree, const BinarySearchTree &rTree);
-*/
