@@ -161,12 +161,17 @@ void BinarySearchTree::remove(string word, BinarySearchTree::Node *&currentNode)
     if (word == currentNode->word) {
         if (currentNode->counter == 1) {
             if (currentNode->left == nullptr) {
+                Node *ptrCur = currentNode;
                 currentNode = currentNode->right;
+                delete ptrCur;
                 return;
             } else if (currentNode->right == nullptr) {
+                Node *ptrCur = currentNode;
                 currentNode = currentNode->left;
+                delete ptrCur;
                 return;
             } else if (currentNode->left == nullptr && currentNode->right == nullptr) {
+                delete currentNode;
                 return;
             } else {
              //    cout << "CurNode: " << currentNode << currentNode->word << currentNode->left->word << currentNode->right->word << endl;
