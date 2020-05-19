@@ -63,7 +63,7 @@ private:
     bool addNode(int value, int index, const std::vector<int>& seq, Node *&root);
     int countEvenNodes(Node *root);
     bool isPositive(Node *root);
-    bool deleteLeaves(Node *&root);
+    void deleteLeaves(Node *&root);
     void countAvg(Node *root, int& count, int& sum);
     bool findNode(Node *root, int value, std::vector<int>& seq);
 

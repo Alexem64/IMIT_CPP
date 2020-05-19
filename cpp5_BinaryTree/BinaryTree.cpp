@@ -99,11 +99,11 @@ void BinaryTree::deleteLeaves() {
     deleteLeaves(root);
 }
 
-bool BinaryTree::deleteLeaves(Node *&currentNode) {
+/*bool BinaryTree::deleteLeaves(Node *&currentNode) {
     if (currentNode == nullptr) return false;
     if (currentNode->left == nullptr && currentNode->right == nullptr) {
         delete currentNode;
-        currentNode == nullptr;
+        currentNode = nullptr;
         return true;
     }
     else {
@@ -112,6 +112,21 @@ bool BinaryTree::deleteLeaves(Node *&currentNode) {
         if (deleteLeaves(currentNode->right))
             currentNode->right = nullptr;
         return false;
+    }
+}*/
+void BinaryTree::deleteLeaves(Node *&currentNode) {
+    if (currentNode == nullptr) return;
+    if (currentNode->left == nullptr && currentNode->right == nullptr) {
+        delete currentNode;
+        currentNode = nullptr;
+        return;
+    }
+    else {
+         (deleteLeaves(currentNode->left));
+       //     currentNode->left = nullptr;
+         (deleteLeaves(currentNode->right));
+       //     currentNode->right = nullptr;
+        return;
     }
 }
 

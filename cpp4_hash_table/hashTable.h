@@ -97,10 +97,6 @@ public:
             this->start();
         }
 
-        ~Iterator() {
-            delete this->current;
-            delete this->begin;
-        }
 
         void start() override {
             this->current = this->begin;

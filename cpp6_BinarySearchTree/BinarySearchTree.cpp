@@ -182,10 +182,6 @@ void BinarySearchTree::remove(string word, BinarySearchTree::Node *&currentNode)
                 remove(minNode->word, currentNode->right);
          //       cout << "CurNode: " << currentNode << currentNode->word << currentNode->left->word << currentNode->right->word << endl;
           //      cout << "minNode: " << minNode << minNode->word  << endl;
-                delete minNode;
-                minNode = nullptr;
-                //   minNode = nullptr;
-             //  delete minNode;
                 return;
             }
         }
